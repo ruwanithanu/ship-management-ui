@@ -8,7 +8,8 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+env:
+  PAT: ${{ secrets.PAT }}
 jobs:
   build:
     runs-on: ubuntu-latest
