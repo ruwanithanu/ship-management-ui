@@ -1,0 +1,78 @@
+{
+  "data": {
+    "currentIssues": [
+      {
+        "id": "0001",
+        "downloadUri": "/images/magazine00.png",
+        "name": "Digitisation",
+        "caption": "Digitisation",
+        "title": "Port Documentation Made Easy with DNV GL App",
+        "issueNumber": 1,
+        "issueDate": "2021-06-05T21:12:00Z",
+        "position": "Main"
+      },
+      {
+        "id": "0002",
+        "downloadUri": "/images/magazine01.png",
+        "name": "Covid-19",
+        "caption": "Covid-19",
+        "title": "Crew Relief in Uncertain Times",
+        "issueNumber": 2,
+        "issueDate": "2021-05-05T21:12:00Z",
+        "position": "Tile1"
+      },
+      {
+        "id": "0003",
+        "downloadUri": "/images/magazine02.png",
+        "name": "Projet",
+        "caption": "Projet",
+        "title": "MV Forte given DP2 Makeover in a first for Boskalis Heavy-Lift fleet",
+        "issueNumber": 3,
+        "issueDate": "2021-05-01T21:12:00Z",
+        "position": "Tile2"
+      }
+    ],
+    "pastIssues": [
+      {
+        "id": "0004",
+        "downloadUri": "/images/magazine03.png",
+        "name": "magazine 4",
+        "title": "magazine 4",
+        "issueNumber": 4,
+        "issueDate": "2021-04-01T21:12:00Z"
+      },
+      {
+        "id": "0005",
+        "downloadUri": "/images/magazine04.png",
+        "name": "magazine 5",
+        "title": "magazine 5",
+        "issueNumber": 5,
+        "issueDate": "2021-03-01T21:12:00Z"
+      },
+      {
+        "id": "0006",
+        "downloadUri": "/images/magazine05.png",
+        "name": "magazine 6",
+        "title": "magazine 6",
+        "issueNumber": 5,
+        "issueDate": "2021-02-01T21:12:00Z"
+      },
+      {
+        "id": "0007",
+        "downloadUri": "/images/magazine06.png",
+        "name": "magazine 7",
+        "title": "magazine 7",
+        "issueNumber": 6,
+        "issueDate": "2021-01-01T21:12:00Z"
+      },
+      {
+        "id": "0008",
+        "downloadUri": "/images/magazine07.png",
+        "name": "magazine 8",
+        "title": "magazine 8",
+        "issueNumber": 7,
+        "issueDate": "2020-12-01T21:12:00Z"
+      }
+    ]
+  }
+}

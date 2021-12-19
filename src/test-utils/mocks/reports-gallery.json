@@ -1,0 +1,151 @@
+{
+  "data": [{
+    "id": "00001",
+    "parentId": "",
+    "name": "Gallery 1",
+    "modifiedOnUtc": "2020-06-05T21:12:00Z",
+    "modifiedBy": "John",
+    "type": "File Folder",
+    "isGallery": true
+  }, {
+    "id": "00002",
+    "parentId": "",
+    "name": "Gallery 2",
+    "modifiedOnUtc": "2020-06-05T21:12:00Z",
+    "modifiedBy": "John",
+    "type": "File Folder",
+    "isGallery": true
+  }, {
+    "id": "00003",
+    "parentId": "00001",
+    "name": "Dummy Image 1",
+    "modifiedOnUtc": "2020-06-05T21:12:00Z",
+    "modifiedBy": "John",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/046/fb2"
+    }
+  }, {
+    "id": "00004",
+    "parentId": "00001",
+    "name": "Dummy Image 2",
+    "modifiedOnUtc": "2020-06-05T21:12:00Z",
+    "modifiedBy": "John",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/fb2/046"
+    }
+  }, {
+    "id": "00005",
+    "parentId": "00001",
+    "name": "Dummy Image 3",
+    "modifiedOnUtc": "2020-06-05T23:10:00Z",
+    "modifiedBy": "Michael",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/046/fb2"
+    }
+  }, {
+    "id": "00006",
+    "parentId": "00001",
+    "name": "Dummy Image 4",
+    "modifiedOnUtc": "2020-06-05T13:03:00Z",
+    "modifiedBy": "Michael",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/fb2/046"
+    }
+  }, {
+    "id": "00007",
+    "parentId": "00001",
+    "name": "Dummy Image 5",
+    "modifiedOnUtc": "2020-06-05T13:03:00Z",
+    "modifiedBy": "Michael",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/046/fb2"
+    }
+  }, {
+    "id": "00008",
+    "parentId": "00001",
+    "name": "Dummy Image 6",
+    "modifiedOnUtc": "2020-06-05T13:03:00Z",
+    "modifiedBy": "Michael",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/fb2/046"
+    }
+  }, {
+    "id": "00009",
+    "parentId": "00002",
+    "name": "Dummy Image 7",
+    "modifiedOnUtc": "2020-06-05T21:12:00Z",
+    "modifiedBy": "John",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/046/fb2"
+    }
+  }, {
+    "id": "00010",
+    "parentId": "00002",
+    "name": "Dummy Image 8",
+    "modifiedOnUtc": "2020-06-05T23:10:00Z",
+    "modifiedBy": "Michael",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/fb2/046"
+    }
+  }, {
+    "id": "00011",
+    "parentId": "00002",
+    "name": "Dummy Image 9",
+    "modifiedOnUtc": "2020-06-05T13:03:00Z",
+    "modifiedBy": "Michael",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/046/fb2"
+    }
+  }, {
+    "id": "00012",
+    "parentId": "00002",
+    "name": "Dummy Image 10",
+    "modifiedOnUtc": "2020-06-05T13:03:00Z",
+    "modifiedBy": "Michael",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/fb2/046"
+    }
+  }, {
+    "id": "00013",
+    "parentId": "00002",
+    "name": "Dummy Image 11",
+    "modifiedOnUtc": "2020-06-05T13:03:00Z",
+    "modifiedBy": "Michael",
+    "type": "Image",
+    "thumbnail": {
+      "height": 294,
+      "width": 176,
+      "url": "https://dummyimage.com/294x176/046/fb2"
+    }
+  }]
+}

@@ -1,0 +1,16 @@
+{
+  "view.documents": "文件",
+  "months.jan": "1月",
+  "months.feb": "2月",
+  "months.mar": "3月",
+  "months.apr": "4月",
+  "months.may": "五月",
+  "months.jun": "六月",
+  "months.jul": "7月",
+  "months.aug": "8月",
+  "months.sep": "9月",
+  "months.oct": "10月",
+  "months.nov": "11月",
+  "months.dec": "12月",
+  "format.date": "{{ year }}年{{ month }}{{ day }}日, {{ time }}"
+}

@@ -1,0 +1,59 @@
+{
+  "data": [
+    {
+        "imo": "8000005",
+        "name": "Invincible",
+        "aeCode": "ZZ5J",
+        "vesselType": "HEAVY LIFT CARRIER",
+        "flag": "Hong Kong",
+        "organization": "Hunters Group Limited",
+        "organizationId": 3,
+        "status": "Port",
+        "active": true
+    },
+    {
+        "imo": "8000004",
+        "name": "Immortal",
+        "aeCode": "ZZ4J",
+        "vesselType": "Bulk Carrier",
+        "flag": "Greece",
+        "organization": "Hunters Group Limited",
+        "organizationId": 3,
+        "status": "Sailing (no stop since last report)",
+        "active": true
+    },
+    {
+        "imo": "8000001",
+        "name": "Archiever",
+        "aeCode": "ZZ1J",
+        "vesselType": "CONTAINER",
+        "flag": "Liberia",
+        "organization": "Hunters Group Limited",
+        "organizationId": 3,
+        "status": "Anchoring/Drifting",
+        "active": true
+    },
+    {
+        "imo": "8000003",
+        "name": "Endurance",
+        "aeCode": "ZZ3J",
+        "vesselType": "GAS CARRIER",
+        "flag": "Hong Kong",
+        "organization": "Hunters Group Limited",
+        "organizationId": 3,
+        "status": "Anchoring/Drifting",
+        "active": true
+    },
+    {
+        "imo": "8000009",
+        "name": "Primera",
+        "aeCode": "ZZ9J",
+        "vesselType": "Passenger Boat",
+        "flag": "Hong Kong",
+        "organization": "Hunters Group Limited",
+        "organizationId": 3,
+        "status": "Anchoring/Drifting",
+        "active": true
+    }
+  ]
+}
