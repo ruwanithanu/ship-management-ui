@@ -26,7 +26,8 @@ export interface SharePointfile {
   modifiedBy: string;
   type: string;
   thumbnail?: Thumbnail;
-  isGallery?: boolean;
+  isGalleryFolder?: boolean;
+  driveName: string;
 };
 
 export type SharePointfileField = keyof SharePointfile;
@@ -60,7 +61,7 @@ export type MenuItemArray = Array<MenuItem>;
 export type SortOrder = 'ASC' | 'DESC' | 'NONE';
 
 export enum FileTypes {
-  FOLDER = 'File Folder',
+  FOLDER = 'Folder',
   GALLERY = 'Gallery',
   PDF = 'Pdf',
   WORD = 'Word',

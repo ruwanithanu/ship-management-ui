@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useClaims } from '@context/Reports';
+import { useVessels } from '@context/Vessels';
 import SharePointDocList from '@components/SharePointDocList';
 
 const ClaimsTab = () => {
@@ -14,13 +15,15 @@ const ClaimsTab = () => {
     setParentId,
     navigate
   } = useClaims();
+  const { state: { vessel } } = useVessels();
 
   useEffect(() => {
     async function doFetchData() {
-      await fetchData();
+      await fetchData(vessel.aeCode);
     }
     doFetchData();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [vessel]);
 
   return <SharePointDocList
     data={data}

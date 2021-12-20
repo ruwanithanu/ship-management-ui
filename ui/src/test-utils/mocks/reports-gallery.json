@@ -5,16 +5,18 @@
     "name": "Gallery 1",
     "modifiedOnUtc": "2020-06-05T21:12:00Z",
     "modifiedBy": "John",
-    "type": "File Folder",
-    "isGallery": true
+    "type": "Folder",
+    "isGalleryFolder": true,
+    "driveName": "driveName"
   }, {
     "id": "00002",
     "parentId": "",
     "name": "Gallery 2",
     "modifiedOnUtc": "2020-06-05T21:12:00Z",
     "modifiedBy": "John",
-    "type": "File Folder",
-    "isGallery": true
+    "type": "Folder",
+    "isGalleryFolder": true,
+    "driveName": "driveName"
   }, {
     "id": "00003",
     "parentId": "00001",
@@ -22,6 +24,7 @@
     "modifiedOnUtc": "2020-06-05T21:12:00Z",
     "modifiedBy": "John",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,
@@ -34,6 +37,7 @@
     "modifiedOnUtc": "2020-06-05T21:12:00Z",
     "modifiedBy": "John",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,
@@ -46,6 +50,7 @@
     "modifiedOnUtc": "2020-06-05T23:10:00Z",
     "modifiedBy": "Michael",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,
@@ -58,6 +63,7 @@
     "modifiedOnUtc": "2020-06-05T13:03:00Z",
     "modifiedBy": "Michael",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,
@@ -70,6 +76,7 @@
     "modifiedOnUtc": "2020-06-05T13:03:00Z",
     "modifiedBy": "Michael",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,
@@ -82,6 +89,7 @@
     "modifiedOnUtc": "2020-06-05T13:03:00Z",
     "modifiedBy": "Michael",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,
@@ -94,6 +102,7 @@
     "modifiedOnUtc": "2020-06-05T21:12:00Z",
     "modifiedBy": "John",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,
@@ -106,6 +115,7 @@
     "modifiedOnUtc": "2020-06-05T23:10:00Z",
     "modifiedBy": "Michael",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,
@@ -118,6 +128,7 @@
     "modifiedOnUtc": "2020-06-05T13:03:00Z",
     "modifiedBy": "Michael",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,
@@ -130,6 +141,7 @@
     "modifiedOnUtc": "2020-06-05T13:03:00Z",
     "modifiedBy": "Michael",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,
@@ -142,6 +154,7 @@
     "modifiedOnUtc": "2020-06-05T13:03:00Z",
     "modifiedBy": "Michael",
     "type": "Image",
+    "driveName": "driveName",
     "thumbnail": {
       "height": 294,
       "width": 176,

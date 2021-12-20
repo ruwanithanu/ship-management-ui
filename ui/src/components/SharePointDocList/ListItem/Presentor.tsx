@@ -28,7 +28,7 @@ const Presentor = ({
       <SC.DocDate>{ modifiedOn }</SC.DocDate>
     </SC.DetailsContainer>
     <SC.ActionsContainer>
-      { data.type !== FileTypes.FOLDER && data.isGallery ?
+      { data.type !== FileTypes.FOLDER && data.isGalleryFolder ?
         <SC.DownLoadIcon onClick={handleDownload} /> : '' }
     </SC.ActionsContainer>
   </SC.Container>;

@@ -91,7 +91,7 @@ const SharePointDocList = ({ data, parentId, setParentId, page, navigate }: Prop
           {parentFolder.name}
         </SC.ParentFolder>
       }
-      {(parentFolder === undefined || (parentFolder.type === FileTypes.FOLDER && !parentFolder.isGallery)) ? <>
+      {(parentFolder === undefined || (parentFolder.type === FileTypes.FOLDER && !parentFolder.isGalleryFolder)) ? <>
         {isAboveTablet || isAboveBreakPoint?
           <Table
             rowComponent={TableRow}

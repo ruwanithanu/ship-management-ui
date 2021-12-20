@@ -1,6 +1,6 @@
 import { Dispatch } from 'react';
 
-import { SharePointfiles } from '@/types';
+import { SharePointfiles, Vessel } from '@/types';
 import { fetchFinancialVesselReports } from '@/api';
 
 import {
@@ -8,7 +8,7 @@ import {
   Actions
 } from '../../common/types';
 
-export const fetchData = (dispatch: Dispatch<Action>) => async () => {
-  const data: SharePointfiles = await fetchFinancialVesselReports();
+export const fetchData = (dispatch: Dispatch<Action>) => async (vessel: Vessel) => {
+  const data: SharePointfiles = await fetchFinancialVesselReports(vessel);
   dispatch({ type: Actions.FETCH_DATA, payload: data });
 };

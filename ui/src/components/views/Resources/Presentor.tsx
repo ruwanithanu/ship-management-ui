@@ -15,12 +15,9 @@ import {
   DropTabs,
   Spinner
 } from '@angloeastern/react-components';
-import { useVessels } from '@context/Vessels';
-import BlankView from '../BlankView';
 
 const Presentor = () => {
   const { t, ready } = useTranslation();
-  const { state: { vessel } } = useVessels();
   const { state: { activeItem, menu }, setActiveItem, getMenuItem } = useSidebar();
   const isAboveTablet = useMediaQuery('(min-width: 575px)');
   const { isAboveBreakPoint } = useBreakPoint(575);
@@ -35,10 +32,6 @@ const Presentor = () => {
   }, [activeItem, menu]);
 
   if (!ready) return <Spinner />;
-
-  if (!vessel) {
-    return <BlankView view={t('view.resources')} />
-  }
 
   return <View>
     <TabComponent>

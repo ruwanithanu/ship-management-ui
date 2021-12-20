@@ -8,7 +8,7 @@ import {
   Actions
 } from '../../common/types';
 
-export const fetchData = (dispatch: Dispatch<Action>) => async () => {
-  const data: SharePointfiles = await fetchReportsCommercial();
+export const fetchData = (dispatch: Dispatch<Action>) => async (aeCode: string) => {
+  const data: SharePointfiles = await fetchReportsCommercial(aeCode);
   dispatch({ type: Actions.FETCH_DATA, payload: data });
 };

@@ -31,6 +31,7 @@ const Presentor = () => {
       const menuItem = getMenuItem('reports');
       setActiveItem(menuItem);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeItem, menu]);
 
   if (!ready) return <Spinner />;

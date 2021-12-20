@@ -1,7 +1,8 @@
 // import { memoize } from '@/utils';
 import http, { extraHeaders } from './http';
+import { Vessel } from '@/types';
 
-import { SharePointfile, TechPaperFile, Downloadable, FileTypes } from '@/types';
+import { Downloadable } from '@/types';
 
 const { REACT_APP_ORG_ID: ORG_ID } = process.env;
 
@@ -13,38 +14,59 @@ export const fetchVessels = async () => {
   return data;
 };
 
-export const fetchDocuments = async () => {
-  const { data } = await import('../test-utils/mocks/documents.json');
+export const fetchDocuments = async (aeCode: string) => {
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Vessels/Vessel%20Documents/${aeCode}/Documents/files`, {
+    headers
+  });
   return data;
 };
 
-export const fetchFinancialVesselReports = async () => {
-  const { data } = await import('../test-utils/mocks/accounts-vessels.json');
+export const fetchFinancialVesselReports = async (vessel: Vessel) => {
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Vessels/Client%20Financial%20Reports/${vessel.aeCode}/${vessel.name}/files`, {
+    headers
+  });
   return data;
 };
 
 export const fetchFinancialFleetReports = async () => {
-  const { data } = await import('../test-utils/mocks/accounts-fleet.json');
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Vessels/Client%20Financial%20Reports/ZZZ${ORG_ID}/ZZ_REPORTS%20MULTIPLE%20SHIPS/files`, {
+    headers
+  });
   return data;
 };
 
-export const fetchReportsClaims = async () => {
-  const { data } = await import('../test-utils/mocks/reports-claims.json');
+export const fetchReportsClaims = async (aeCode: string) => {
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Vessels/Vessel%20Documents/${aeCode}/Claims/files`, {
+    headers
+  });
   return data;
 };
 
-export const fetchReportsCommercial = async () => {
-  const { data } = await import('../test-utils/mocks/reports-commercial.json');
+export const fetchReportsCommercial = async (aeCode: string) => {
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Vessels/Vessel%20Documents/${aeCode}/Commercial/files`, {
+    headers
+  });
   return data;
 };
 
-export const fetchReportsGallery = async () => {
-  const { data } = await import('../test-utils/mocks/reports-gallery.json');
+export const fetchReportsGallery = async (aeCode: string) => {
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Vessels/Vessel%20Documents/${aeCode}/Gallery/files`, {
+    headers
+  });
   return data;
 };
 
-export const fetchReportsOther = async () => {
-  const { data } = await import('../test-utils/mocks/reports-other-reports.json');
+export const fetchReportsOther = async (aeCode: string) => {
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Vessels/Vessel%20Documents/${aeCode}/Other%20Reports/files`, {
+    headers
+  });
   return data;
 };
 
@@ -54,8 +76,6 @@ export const fetchDrawings = async () => {
 };
 
 export const fetchLeadership = async () => {
-  // const { data } = await import('../test-utils/mocks/leadership.json');
-  // return data;
   // const headers = extraHeaders({ domain: 'AETEC' });
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/leadership`, {
@@ -65,8 +85,6 @@ export const fetchLeadership = async () => {
 };
 
 export const fetchLookouts = async () => {
-  // const { data } = await import('../test-utils/mocks/tech-papers.json');
-  // return data;
   // const headers = extraHeaders({ domain: 'AETEC' });
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/Lookout/files`, {
@@ -76,8 +94,6 @@ export const fetchLookouts = async () => {
 };
 
 export const fetchPSC = async () => {
-  // const { data } = await import('../test-utils/mocks/tech-papers.json');
-  // return data;
   // const headers = extraHeaders({ domain: 'AETEC' });
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/PSC/files`, {
@@ -87,8 +103,6 @@ export const fetchPSC = async () => {
 };
 
 export const fetchTechnicalPapers = async () => {
-  // const { data } = await import('../test-utils/mocks/tech-papers.json');
-  // return data;
   // const headers = extraHeaders({ domain: 'AETEC' });
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/Technical%20Papers/files`, {
@@ -98,19 +112,19 @@ export const fetchTechnicalPapers = async () => {
 };
 
 export const getDownloadURL = async (file: Downloadable) => {
+  // if (file.hasOwnProperty('type')) {
+  //   await setTimeout(() => {}, 30);
 
-  if (file.hasOwnProperty('type')) {
-    await setTimeout(() => {}, 30);
-
-    let sp: SharePointfile = file as SharePointfile;
-    switch (sp.type) {
-      case FileTypes.IMAGE: return '/images/ship-01.jpg';
-      default: return '/assets/sample.pdf';
-    }
-  } else if (file.hasOwnProperty('driveName')) {
-    let tp: TechPaperFile = file as TechPaperFile;
+  //   let sp: SharePointfile = file as SharePointfile;
+  //   switch (sp.type) {
+  //     case FileTypes.IMAGE: return '/images/ship-01.jpg';
+  //     default: return '/assets/sample.pdf';
+  //   }
+  // } else
+  if (file.hasOwnProperty('driveName')) {
+    // let tp: TechPaperFile = file as TechPaperFile;
     const headers = extraHeaders({});
-    const { data: { url } } = await http.get(`/Files/${tp.driveName}/${tp.id}`, {
+    const { data: { url } } = await http.get(`/Files/${file.driveName}/${file.id}`, {
       headers
     });
     return url;
@@ -121,18 +135,19 @@ export const getDownloadURL = async (file: Downloadable) => {
 
 export const getPreviewURL = async (file: Downloadable) => {
 
-  if (file.hasOwnProperty('type')) {
-    await setTimeout(() => {}, 30);
+  // if (file.hasOwnProperty('type')) {
+  //   await setTimeout(() => {}, 30);
 
-    let sp: SharePointfile = file as SharePointfile;
-    switch (sp.type) {
-      case FileTypes.IMAGE: return '/images/ship-01.jpg';
-      default: return '/assets/sample.pdf';
-    }
-  } else if (file.hasOwnProperty('driveName')) {
-    let tp: TechPaperFile = file as TechPaperFile;
+  //   let sp: SharePointfile = file as SharePointfile;
+  //   switch (sp.type) {
+  //     case FileTypes.IMAGE: return '/images/ship-01.jpg';
+  //     default: return '/assets/sample.pdf';
+  //   }
+  // } else
+  if (file.hasOwnProperty('driveName')) {
+    // let tp: TechPaperFile = file as TechPaperFile;
     const headers = extraHeaders({});
-    const { data: { url } } = await http.get(`/Files/preview/${tp.driveName}/${tp.id}`, {
+    const { data: { url } } = await http.get(`/Files/preview/${file.driveName}/${file.id}`, {
       headers
     });
     return url;

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useCommercial } from '@context/Reports';
+import { useVessels } from '@context/Vessels';
 import SharePointDocList from '@components/SharePointDocList';
 
 const CommercialTab = () => {
@@ -14,13 +15,15 @@ const CommercialTab = () => {
     setParentId,
     navigate
   } = useCommercial();
+  const { state: { vessel } } = useVessels();
 
   useEffect(() => {
     async function doFetchData() {
-      await fetchData();
+      await fetchData(vessel.aeCode);
     }
     doFetchData();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [vessel]);
 
   return <SharePointDocList
     data={data}

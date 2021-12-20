@@ -22,7 +22,7 @@ const DocIcon = ({ data }: Props) => {
   const getIcon = () => {
     switch (data.type) {
       case FileTypes.FOLDER:
-        return data.isGallery ? faImages : faFolder;
+        return data.isGalleryFolder ? faImages : faFolder;
       case FileTypes.PDF: return faFilePdf;
       case FileTypes.WORD: return faFileWord;
       case FileTypes.EXCEL: return faFileExcel;

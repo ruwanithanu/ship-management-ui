@@ -26,16 +26,18 @@ const Presentor = () => {
 
   useEffect(() => {
     async function doFetchData() {
-      await fetchData();
+      await fetchData(vessel.aeCode);
     }
     doFetchData();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [vessel]);
 
   useEffect(() => {
     if (menu && (!activeItem || activeItem.id !== 'documents')) {
       const menuItem = getMenuItem('documents');
       setActiveItem(menuItem);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeItem, menu]);
 
   if (!ready) return <Spinner />;

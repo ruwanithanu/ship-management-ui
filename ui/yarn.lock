@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@angloeastern/react-components@^0.11.3":
-  version "0.11.3"
-  resolved "https://npm.pkg.github.com/download/@angloeastern/react-components/0.11.3/17ceceaca946e35d1b36e6e62582da16521a518f4ad09f79a1fc637d1a1272c8#a4f7326d00a22ea66e1b441b3e84902dbfd16676"
-  integrity sha512-CjQhjpfxktGHiuWfow+VM9MQBOs/llqGdvWu4aQabtKabVMm/pmIlHaQSnTXZFnCrOlJrRji1xw1Ay0I74twPQ==
+"@angloeastern/react-components@^0.11.4":
+  version "0.11.4"
+  resolved "https://npm.pkg.github.com/download/@angloeastern/react-components/0.11.4/66b02b616a734c2f36515da907ef1d3e982acffc2dd5c3299ef098b2a37e39ba#cd67ac2ad890416efed37990bc7e66ef7fc21be7"
+  integrity sha512-/bI2Ld4Pq3o3VawVx43DA901cbzbOhNrBglJhZx6jlv+2i9sBhWzcfdZMF42rKo8fXxmBMY9wDk0q0A3fYYEcg==
 
 "@apideck/better-ajv-errors@^0.3.1":
   version "0.3.1"

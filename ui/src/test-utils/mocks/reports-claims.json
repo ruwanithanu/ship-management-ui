@@ -5,41 +5,47 @@
     "name": "Minutes of Meeting",
     "modifiedOnUtc": "2020-06-05T21:12:00Z",
     "modifiedBy": "John",
-    "type": "File Folder"
+    "type": "Folder",
+    "driveName": "driveName"
   }, {
     "id": "00002",
     "parentId": "",
     "name": "Quarterly Meetings",
     "modifiedOnUtc": "2020-06-05T21:12:00Z",
     "modifiedBy": "John",
-    "type": "File Folder"
+    "type": "Folder",
+    "driveName": "driveName"
   }, {
     "id": "00003",
     "parentId": "",
     "name": "Half Yearly Meetings",
     "modifiedOnUtc": "2020-06-05T23:10:00Z",
     "modifiedBy": "Michael",
-    "type": "File Folder"
+    "type": "Folder",
+    "driveName": "driveName"
   }, {
     "id": "00004",
     "parentId": "",
     "name": "Annual Meetings",
     "modifiedOnUtc": "2020-06-05T13:03:00Z",
     "modifiedBy": "Michael",
-    "type": "File Folder"
+    "type": "Folder",
+    "driveName": "driveName"
   }, {
     "id": "00005",
     "parentId": "00001",
     "name": "Meeting 1",
     "modifiedOnUtc": "2020-06-05T13:03:00Z",
     "modifiedBy": "Michael",
-    "type":  "File Folder"
+    "type": "Folder",
+    "driveName": "driveName"
   }, {
     "id": "00006",
     "parentId": "00005",
     "name": "Meeting 1",
     "modifiedOnUtc": "2020-06-05T13:03:00Z",
     "modifiedBy": "Michael",
-    "type":  "Pdf"
+    "type": "Pdf",
+    "driveName": "driveName"
   }]
 }

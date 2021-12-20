@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useGallery } from '@context/Reports';
+import { useVessels } from '@context/Vessels';
 import SharePointDocList from '@components/SharePointDocList';
 
 const GalleryTab = () => {
@@ -14,13 +15,15 @@ const GalleryTab = () => {
     setParentId,
     navigate
   } = useGallery();
+  const { state: { vessel } } = useVessels();
 
   useEffect(() => {
     async function doFetchData() {
-      await fetchData();
+      await fetchData(vessel.aeCode);
     }
     doFetchData();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [vessel]);
 
   return <SharePointDocList
     data={data}
