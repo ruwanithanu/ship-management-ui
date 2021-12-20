@@ -22,13 +22,12 @@ jobs:
         with:
           node-version: '14.x'
 
-      - name: npm install, build, and test
+      - name: yarn
         run: |
-          npm install
-          yarn install --frozen-lockfile
+          yarn install
           yarn boostrap
-          npm run build --if-present
           yarn build
+          yarn start
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
