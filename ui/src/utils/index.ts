@@ -1,5 +1,5 @@
 export const memoize = (func: Function) => {
-  const results = <any>{};
+  const results = {} as any;
   return (...args: Array<any>) => {
     const argsKey = JSON.stringify(args);
     if (!results[argsKey]) {
