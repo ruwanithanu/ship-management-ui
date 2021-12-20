@@ -1,7 +1,7 @@
 // import { memoize } from '@/utils';
 import http, { extraHeaders } from './http';
 
-import { SharePointfile, Downloadable, FileTypes } from '@/types';
+import { SharePointfile, TechPaperFile, Downloadable, FileTypes } from '@/types';
 
 const { REACT_APP_ORG_ID: ORG_ID } = process.env;
 
@@ -99,14 +99,21 @@ export const fetchTechnicalPapers = async () => {
 
 export const getDownloadURL = async (file: Downloadable) => {
 
-  await setTimeout(() => {}, 30);
-
   if (file.hasOwnProperty('type')) {
+    await setTimeout(() => {}, 30);
+
     let sp: SharePointfile = file as SharePointfile;
     switch (sp.type) {
       case FileTypes.IMAGE: return '/images/ship-01.jpg';
       default: return '/assets/sample.pdf';
     }
+  } else if (file.hasOwnProperty('driveName')) {
+    let tp: TechPaperFile = file as TechPaperFile;
+    const headers = extraHeaders({});
+    const { data: { url } } = await http.get(`/Files/${tp.driveName}/${tp.id}`, {
+      headers
+    });
+    return url;
   } else {
     return '/assets/sample.pdf';
   }
@@ -114,14 +121,21 @@ export const getDownloadURL = async (file: Downloadable) => {
 
 export const getPreviewURL = async (file: Downloadable) => {
 
-  await setTimeout(() => {}, 30);
-
   if (file.hasOwnProperty('type')) {
+    await setTimeout(() => {}, 30);
+
     let sp: SharePointfile = file as SharePointfile;
     switch (sp.type) {
       case FileTypes.IMAGE: return '/images/ship-01.jpg';
       default: return '/assets/sample.pdf';
     }
+  } else if (file.hasOwnProperty('driveName')) {
+    let tp: TechPaperFile = file as TechPaperFile;
+    const headers = extraHeaders({});
+    const { data: { url } } = await http.get(`/Files/preview/${tp.driveName}/${tp.id}`, {
+      headers
+    });
+    return url;
   } else {
     return '/assets/sample.pdf';
   }

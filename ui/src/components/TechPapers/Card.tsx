@@ -17,7 +17,7 @@ interface Props {
 const Card = ({ file }: Props) => {
   const { t, ready } = useTranslation();
   const { getPreviewUrl, getDownloadUrl } = useShortLivedUrls(file);
-  const { openViewer, setPreview, setDownload} = usePdfViewer();
+  const { openViewer, setPreview, setDownload } = usePdfViewer();
   const [state, setState] = useState({
     previewUrl: undefined,
     downloadUrl: undefined
@@ -35,8 +35,14 @@ const Card = ({ file }: Props) => {
   }, [file]);
 
   const handleClick = async () => {
-    setPreview(state.previewUrl);
-    setDownload(state.downloadUrl);
+    setPreview({
+      url: state.previewUrl,
+      name: file.name
+    });
+    setDownload({
+      url: state.downloadUrl,
+      name: file.name
+    });
     openViewer();
   };
 

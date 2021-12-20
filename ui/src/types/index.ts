@@ -37,6 +37,7 @@ export interface TechPaperFile {
   id: string;
   name: string;
   updatedOn: string;
+  driveName: string;
 }
 
 export type TechPaperFileField = keyof TechPaperFile;

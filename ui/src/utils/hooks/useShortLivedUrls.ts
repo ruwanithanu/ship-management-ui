@@ -9,7 +9,7 @@ export const useShortLivedUrls = (file: Downloadable ) => {
   const isExpired = (cache: any) => {
     const now = (new Date()).getTime();
     return (now - cache.timestamp) > 3600000; // 1 hour TTL
-  }
+  };
 
   const getPreviewUrl = async () => {
     const id = file.id as string;

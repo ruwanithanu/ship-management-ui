@@ -35,8 +35,14 @@ const withFile = (Component: any) => {
         onFolderClick(data.id);
         setTerm('');
       } else if (data.type === FileTypes.PDF && state.previewUrl && state.downloadUrl) {
-        setPreview(state.previewUrl);
-        setDownload(state.downloadUrl);
+        setPreview({
+          url: state.previewUrl,
+          name: data.name
+        });
+        setDownload({
+          url: state.downloadUrl,
+          name: data.name
+        });
         openViewer();
       }
     };
@@ -61,6 +67,7 @@ const withFile = (Component: any) => {
         }
       }
       getUrls();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
 
     if (!ready) return <Spinner />;
