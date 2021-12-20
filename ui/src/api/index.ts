@@ -1,13 +1,15 @@
 // import { memoize } from '@/utils';
-import http from './http';
+import http, { extraHeaders } from './http';
 
 import { SharePointfile, Downloadable, FileTypes } from '@/types';
 
 const { REACT_APP_ORG_ID: ORG_ID } = process.env;
 
 export const fetchVessels = async () => {
-
-  const { data } = await http.get(`/Vessels?organizationId=${ORG_ID}`);
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Vessels?organizationId=${ORG_ID}`, {
+    headers
+  });
   return data;
 };
 
@@ -52,7 +54,12 @@ export const fetchDrawings = async () => {
 };
 
 export const fetchLeadership = async () => {
-  const { data } = await import('../test-utils/mocks/leadership.json');
+  // const { data } = await import('../test-utils/mocks/leadership.json');
+  // return data;
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Resources/leadership`, {
+    headers
+  });
   return data;
 };
 

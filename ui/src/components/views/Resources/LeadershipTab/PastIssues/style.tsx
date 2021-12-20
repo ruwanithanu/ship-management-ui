@@ -65,6 +65,8 @@ const Card = styled.div`
 const ImgBox = styled.div`
   overflow: hidden;
   margin-bottom: 12px;
+  max-width: 240px;
+  max-height: 170px;
 `;
 
 const Img = styled.img`

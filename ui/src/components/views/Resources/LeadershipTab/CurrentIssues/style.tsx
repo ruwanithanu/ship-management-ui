@@ -51,6 +51,7 @@ const ImageBox = styled.div`
   width: 100%;
   overflow: hidden;
   position: absolute;
+  background: ${props => props.theme.colors.navyBlue};
 `;
 
 const Img = styled.img`

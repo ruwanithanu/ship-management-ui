@@ -13,15 +13,23 @@ const http = axios.create({
   timeout: timeout ? parseInt(timeout, 10) : 180000
 });
 
-interface ExtraHeaders {
-  bearer?: string;
-}
+type SP_Domain = 'CDH' | 'AETEC';
+type Auth_Bearer = string | undefined;
 
-export const extraHeaders = ({ bearer }: ExtraHeaders) => {
-  const headers = {} as any;
+interface ExtraHeaders {
+  bearer?: Auth_Bearer;
+  domain?: SP_Domain;
+};
+
+export const extraHeaders = ({bearer, domain = 'CDH'}: ExtraHeaders) => {
+  const headers: any = {
+    'Content-Type': 'application/json',
+    'cp-site-domain': domain
+  };
   if (bearer) {
     headers['Authorization'] = `BEARER ${bearer}`;
   }
+  return headers;
 }
 
 export default http;
