@@ -10,6 +10,7 @@ on:
   workflow_dispatch:
 env:
   PAT: ${{ secrets.PAT }}
+  REACT_APP_ORG_ID: '5'
 jobs:
   build:
     runs-on: ubuntu-latest
