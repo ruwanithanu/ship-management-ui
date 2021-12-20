@@ -93,6 +93,7 @@ const CardTitle = styled.div`
   color: ${props => props.theme.colors.white};
   text-align: left;
   padding: 0 14px;
+  overflow-wrap: anywhere;
 
   > span {
     background: ${props => props.theme.colors.highlight};

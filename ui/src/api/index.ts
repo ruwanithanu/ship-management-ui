@@ -56,6 +56,7 @@ export const fetchDrawings = async () => {
 export const fetchLeadership = async () => {
   // const { data } = await import('../test-utils/mocks/leadership.json');
   // return data;
+  // const headers = extraHeaders({ domain: 'AETEC' });
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/leadership`, {
     headers
@@ -64,17 +65,35 @@ export const fetchLeadership = async () => {
 };
 
 export const fetchLookouts = async () => {
-  const { data } = await import('../test-utils/mocks/tech-papers.json');
+  // const { data } = await import('../test-utils/mocks/tech-papers.json');
+  // return data;
+  // const headers = extraHeaders({ domain: 'AETEC' });
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Resources/Lookout/files`, {
+    headers
+  });
   return data;
 };
 
 export const fetchPSC = async () => {
-  const { data } = await import('../test-utils/mocks/tech-papers.json');
+  // const { data } = await import('../test-utils/mocks/tech-papers.json');
+  // return data;
+  // const headers = extraHeaders({ domain: 'AETEC' });
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Resources/PSC/files`, {
+    headers
+  });
   return data;
 };
 
 export const fetchTechnicalPapers = async () => {
-  const { data } = await import('../test-utils/mocks/tech-papers.json');
+  // const { data } = await import('../test-utils/mocks/tech-papers.json');
+  // return data;
+  // const headers = extraHeaders({ domain: 'AETEC' });
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Resources/Technical%20Papers/files`, {
+    headers
+  });
   return data;
 };
 

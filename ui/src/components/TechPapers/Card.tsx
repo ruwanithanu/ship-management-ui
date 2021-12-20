@@ -31,6 +31,7 @@ const Card = ({ file }: Props) => {
       setState(stateCopy);
     }
     getUrls();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [file]);
 
   const handleClick = async () => {
