@@ -10,6 +10,11 @@ const app = express();
 const port = process.env.SERVER_PORT || 3080; // default port to listen
 
 app.use(cors());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 app.use(bodyParser.json());
 app.use(express.static(process.cwd() + "/ui/build/"));
 

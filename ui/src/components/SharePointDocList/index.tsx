@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Gallery from '@components/Gallery';
 import ListItem from './ListItem';
@@ -17,7 +17,9 @@ import { getPageSlice } from '@/utils';
 import { useSearch } from '@context/Search';
 import { SharePointfile, SharePointfiles, FileTypes } from '@/types/';
 import { useSharePointFiles } from '@utils/hooks/useSharePointFiles';
+import CenterMessage from '@components/CenterMessage';
 import SC from './style';
+import { t } from 'i18next';
 
 interface Props {
   data: SharePointfiles;
@@ -49,10 +51,11 @@ const SharePointDocList = ({ data, parentId, setParentId, page, navigate }: Prop
   });
   const { total, dataset, parentFolder } = state;
 
-  const getFolderFiles = () => {
+  const getFolderFiles = useCallback(() => {
     const theParentId = parentId === undefined ? '' : parentId;
     return data.filter((file: SharePointfile) => file.parentId === theParentId)
-  }
+  }, [data, parentId]);
+
 
   useEffect(() => {
     if (data) {
@@ -78,11 +81,11 @@ const SharePointDocList = ({ data, parentId, setParentId, page, navigate }: Prop
         parentFolder: getParentFolder(parentId)
       });
     }
-  }, [data, page, term, parentId, sortBy, sortOrder]);
+  }, [data, page, term, parentId, sortBy, sortOrder, sortFiles, getParentFolder, getFolderFiles]);
 
   useEffect(() => {
     navigate(1);
-  }, [term]);
+  }, [navigate, term]);
 
   return <>
     {data ? <>
@@ -91,29 +94,33 @@ const SharePointDocList = ({ data, parentId, setParentId, page, navigate }: Prop
           {parentFolder.name}
         </SC.ParentFolder>
       }
-      {(parentFolder === undefined || (parentFolder.type === FileTypes.FOLDER && !parentFolder.isGalleryFolder)) ? <>
-        {isAboveTablet || isAboveBreakPoint?
-          <Table
-            rowComponent={TableRow}
-            headComponent={TableHead}
-            data={dataset}
-            onFolderClick={setParentId}
-          /> :
-          <List
-            data={dataset}
-            itemComponent={ListItem}
-            onFolderClick={setParentId}
+      {data.length ? <>
+        {(parentFolder === undefined || (parentFolder.type === FileTypes.FOLDER && !parentFolder.isGalleryFolder)) ? <>
+          {isAboveTablet || isAboveBreakPoint?
+            <Table
+              rowComponent={TableRow}
+              headComponent={TableHead}
+              data={dataset}
+              onFolderClick={setParentId}
+            /> :
+            <List
+              data={dataset}
+              itemComponent={ListItem}
+              onFolderClick={setParentId}
+            />
+          }
+        </> : <Gallery gallery={dataset} slides={getFolderFiles()} />}
+        <SC.Pagination>
+          <Pagination
+            totalCount={total}
+            currentPage={page}
+            navigate={navigate}
+            pageSize={pageSize}
           />
-        }
-      </> : <Gallery gallery={dataset} slides={getFolderFiles()} />}
-      <SC.Pagination>
-        <Pagination
-          totalCount={total}
-          currentPage={page}
-          navigate={navigate}
-          pageSize={pageSize}
-        />
-      </SC.Pagination>
+        </SC.Pagination>
+      </> :
+        <CenterMessage>{t('text.emptyFolder')}</CenterMessage>
+      }
     </> :
     <Spinner />
     }

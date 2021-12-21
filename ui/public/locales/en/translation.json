@@ -63,5 +63,6 @@
   "text.updatedOn": "Updated On",
   "text.issue": "Issue {{ number }} | {{ month }} {{ year }}",
   "text.pastIssues": "Past Issues",
-  "text.selectedVessel": "Vessel: {{ name }}"
+  "text.selectedVessel": "Vessel: {{ name }}",
+  "text.emptyFolder": "This folder is empty!"
 }
