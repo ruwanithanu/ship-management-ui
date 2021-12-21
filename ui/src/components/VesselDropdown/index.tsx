@@ -43,6 +43,7 @@ const VesselDropdown = () => {
       await fetchVessels();
     }
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <SC.Container>

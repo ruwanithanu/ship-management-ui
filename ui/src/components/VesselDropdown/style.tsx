@@ -6,9 +6,9 @@ import { DropdownStyles } from '@angloeastern/react-components';
 
 const { Header, ListItem } = DropdownStyles;
 
-interface HeadContainerProps {
-  isOpen: boolean;
-};
+// interface HeadContainerProps {
+//   isOpen: boolean;
+// };
 
 const Container = styled.div`
   flex: 1 0;
@@ -35,7 +35,7 @@ const HeadContainer = styled(Header)`
   @media only screen and (min-width: 575px) {
     color: ${props => props.theme.colors.textDark};
     box-shadow: none;
-    background: linear-gradient(180deg, #FAFAFA 0%, #EFEFEF 100%);
+    background: linear-gradient(180deg, #fafafa 0%, #efefef 100%);
     border: 1px solid #efefef;
     padding: 0;
     align-self: center;
@@ -46,17 +46,17 @@ const HeadContainer = styled(Header)`
     }
 
     &:after {
-      line-height: 45px;
+      line-height: 50px;
       right: 24px;
     }
-
-    ${({ isOpen }: HeadContainerProps) => isOpen && `
-      &:after {
-        line-height: 55px;
-      }
-    `}
   }
 `;
+
+// ${({ isOpen }: HeadContainerProps) => isOpen && `
+//   &:after {
+//     line-height: 50px;
+//   }
+// `}
 
 const IconContainer = styled.div`
   display: none;

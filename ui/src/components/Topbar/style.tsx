@@ -95,7 +95,9 @@ const BottomSide = styled.div`
     align-self: center;
 
     ul {
-      width: 300px;
+      width: 296px;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 `;
