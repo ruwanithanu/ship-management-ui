@@ -1,4 +1,4 @@
-// import { memoize } from '@/utils';
+import { memoize } from '@/utils';
 import http, { extraHeaders } from './http';
 import { Vessel } from '@/types';
 
@@ -6,71 +6,71 @@ import { Downloadable } from '@/types';
 
 const { REACT_APP_ORG_ID: ORG_ID } = process.env;
 
-export const fetchVessels = async () => {
+export const fetchVessels = memoize(async () => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Vessels?organizationId=${ORG_ID}`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchDocuments = async (aeCode: string) => {
+export const fetchDocuments = memoize(async (aeCode: string) => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Vessels/Vessel%20Documents/${aeCode}/Documents/files`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchFinancialVesselReports = async (vessel: Vessel) => {
+export const fetchFinancialVesselReports = memoize(async (vessel: Vessel) => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Vessels/Client%20Financial%20Reports/${vessel.aeCode}/${vessel.name}/files`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchFinancialFleetReports = async () => {
+export const fetchFinancialFleetReports = memoize(async () => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Vessels/Client%20Financial%20Reports/ZZZ${ORG_ID}/ZZ_REPORTS%20MULTIPLE%20SHIPS/files`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchReportsClaims = async (aeCode: string) => {
+export const fetchReportsClaims = memoize(async (aeCode: string) => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Vessels/Vessel%20Documents/${aeCode}/Claims/files`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchReportsCommercial = async (aeCode: string) => {
+export const fetchReportsCommercial = memoize(async (aeCode: string) => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Vessels/Vessel%20Documents/${aeCode}/Commercial/files`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchReportsGallery = async (aeCode: string) => {
+export const fetchReportsGallery = memoize(async (aeCode: string) => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Vessels/Vessel%20Documents/${aeCode}/Gallery/files`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchReportsOther = async (aeCode: string) => {
+export const fetchReportsOther = memoize(async (aeCode: string) => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Vessels/Vessel%20Documents/${aeCode}/Other%20Reports/files`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchDrawings = async () => {
+export const fetchDrawings = memoize(async () => {
   const { data } = await import('../test-utils/mocks/drawings.json');
   return data;
   // const headers = extraHeaders({ domain: 'AETEC' });
@@ -78,54 +78,54 @@ export const fetchDrawings = async () => {
   //   headers
   // });
   // return data;
-};
+});
 
-export const fetchLeadership = async () => {
+export const fetchLeadership = memoize(async () => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/leadership`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchLookouts = async () => {
+export const fetchLookouts = memoize(async () => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/Lookout/files`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchPSC = async () => {
+export const fetchPSC = memoize(async () => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/PSC/files`, {
     headers
   });
   return data;
-};
+});
 
-export const fetchTechnicalPapers = async () => {
+export const fetchTechnicalPapers = memoize(async () => {
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/Technical%20Papers/files`, {
     headers
   });
   return data;
-};
+});
 
-export const getDownloadURL = async (file: Downloadable) => {
+export const getDownloadURL = memoize(async (file: Downloadable) => {
   if (file.hasOwnProperty('driveName')) {
     const { data: { url } } = await http.get(`/Files/${file.driveName}/${file.id}`);
     return url;
   } else {
     return '/assets/sample.pdf';
   }
-};
+});
 
-export const getPreviewURL = async (file: Downloadable) => {
+export const getPreviewURL = memoize(async (file: Downloadable) => {
   if (file.hasOwnProperty('driveName')) {
     const { data: { url } } = await http.get(`/Files/preview/${file.driveName}/${file.id}`);
     return url;
   } else {
     return '/assets/sample.pdf';
   }
-};
+});
