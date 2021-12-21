@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 // import path from 'path';
 
@@ -8,6 +9,7 @@ dotenv.config();
 const app = express();
 const port = process.env.SERVER_PORT || 3080; // default port to listen
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(process.cwd() + "/ui/build/"));
 

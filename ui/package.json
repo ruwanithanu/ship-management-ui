@@ -42,7 +42,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "CI=false && env-cmd craco build",
+    "build": "CI=false && env-cmd -f .env.production craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
