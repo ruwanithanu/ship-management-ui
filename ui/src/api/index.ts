@@ -73,10 +73,14 @@ export const fetchReportsOther = async (aeCode: string) => {
 export const fetchDrawings = async () => {
   const { data } = await import('../test-utils/mocks/drawings.json');
   return data;
+  // const headers = extraHeaders({ domain: 'AETEC' });
+  // const { data } = await http.get(`/Vessels/Delivery%20Documents/${aeCode}/Other%20Reports/files`, {
+  //   headers
+  // });
+  // return data;
 };
 
 export const fetchLeadership = async () => {
-  // const headers = extraHeaders({ domain: 'AETEC' });
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/leadership`, {
     headers
@@ -85,7 +89,6 @@ export const fetchLeadership = async () => {
 };
 
 export const fetchLookouts = async () => {
-  // const headers = extraHeaders({ domain: 'AETEC' });
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/Lookout/files`, {
     headers
@@ -94,7 +97,6 @@ export const fetchLookouts = async () => {
 };
 
 export const fetchPSC = async () => {
-  // const headers = extraHeaders({ domain: 'AETEC' });
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/PSC/files`, {
     headers
@@ -103,7 +105,6 @@ export const fetchPSC = async () => {
 };
 
 export const fetchTechnicalPapers = async () => {
-  // const headers = extraHeaders({ domain: 'AETEC' });
   const headers = extraHeaders({});
   const { data } = await http.get(`/Resources/Technical%20Papers/files`, {
     headers
@@ -112,21 +113,8 @@ export const fetchTechnicalPapers = async () => {
 };
 
 export const getDownloadURL = async (file: Downloadable) => {
-  // if (file.hasOwnProperty('type')) {
-  //   await setTimeout(() => {}, 30);
-
-  //   let sp: SharePointfile = file as SharePointfile;
-  //   switch (sp.type) {
-  //     case FileTypes.IMAGE: return '/images/ship-01.jpg';
-  //     default: return '/assets/sample.pdf';
-  //   }
-  // } else
   if (file.hasOwnProperty('driveName')) {
-    // let tp: TechPaperFile = file as TechPaperFile;
-    const headers = extraHeaders({});
-    const { data: { url } } = await http.get(`/Files/${file.driveName}/${file.id}`, {
-      headers
-    });
+    const { data: { url } } = await http.get(`/Files/${file.driveName}/${file.id}`);
     return url;
   } else {
     return '/assets/sample.pdf';
@@ -134,22 +122,8 @@ export const getDownloadURL = async (file: Downloadable) => {
 };
 
 export const getPreviewURL = async (file: Downloadable) => {
-
-  // if (file.hasOwnProperty('type')) {
-  //   await setTimeout(() => {}, 30);
-
-  //   let sp: SharePointfile = file as SharePointfile;
-  //   switch (sp.type) {
-  //     case FileTypes.IMAGE: return '/images/ship-01.jpg';
-  //     default: return '/assets/sample.pdf';
-  //   }
-  // } else
   if (file.hasOwnProperty('driveName')) {
-    // let tp: TechPaperFile = file as TechPaperFile;
-    const headers = extraHeaders({});
-    const { data: { url } } = await http.get(`/Files/preview/${file.driveName}/${file.id}`, {
-      headers
-    });
+    const { data: { url } } = await http.get(`/Files/preview/${file.driveName}/${file.id}`);
     return url;
   } else {
     return '/assets/sample.pdf';

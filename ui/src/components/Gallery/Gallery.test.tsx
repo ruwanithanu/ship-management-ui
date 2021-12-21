@@ -1,4 +1,4 @@
-import { act, render, screen } from '../../test-utils/with-slider';
+import { render, screen } from '../../test-utils/with-slider';
 import userEvent from '@testing-library/user-event';
 
 import Gallery from '.';
@@ -10,22 +10,18 @@ const gallery = files.data.filter(f => f.type === FileTypes.IMAGE);
 describe('Gallery', () => {
 
   test('Renders with expected number of images', async () => {
-    await act( async () => {
-      render(<Gallery gallery={gallery} slides={gallery} />)
-    });
+    render(<Gallery gallery={gallery} slides={gallery} />);
 
-    const thumbs = screen.getAllByTestId('thumbnail');
+    const thumbs = await screen.findAllByTestId('thumbnail');
     expect(thumbs).toHaveLength(gallery.length);
   });
 
   test('Should show or hide slider upon interaction', async () => {
-    await act( async () => {
-      render(<Gallery gallery={gallery} slides={gallery} />)
-    });
+    render(<Gallery gallery={gallery} slides={gallery} />);
 
-    const thumbs = screen.getAllByTestId('thumbnail');
+    const thumbs = await screen.findAllByTestId('thumbnail');
 
-    const activeSlide = screen.getByAltText('slide-image');
+    const activeSlide = await screen.findByAltText('slide-image');
     expect(activeSlide).not.toBeVisible();
 
     userEvent.click(thumbs[0]);

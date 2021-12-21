@@ -30,9 +30,11 @@ const Card = ({ file }: Props) => {
       stateCopy.previewUrl = await getPreviewUrl();
       setState(stateCopy);
     }
-    getUrls();
+    if (file && ready) {
+      getUrls();
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [file]);
+  }, [file, ready]);
 
   const handleClick = async () => {
     setPreview({
