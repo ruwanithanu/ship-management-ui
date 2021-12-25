@@ -1,6 +1,6 @@
 import { memoize } from '@/utils';
 import http, { extraHeaders } from './http';
-import axios from 'axios';
+// import axios from 'axios';
 import { Vessel } from '@/types';
 
 import { Downloadable } from '@/types';
@@ -8,13 +8,13 @@ import { Downloadable } from '@/types';
 const { REACT_APP_ORG_ID: ORG_ID } = process.env;
 
 export const fetchVessels = memoize(async () => {
-  // const headers = extraHeaders({});
-  // const { data } = await http.get(`/Vessels?organizationId=${ORG_ID}`, {
-  //   headers
-  // });
-  // return data;
-  const { data } = await axios.get('/vessels');
+  const headers = extraHeaders({});
+  const { data } = await http.get(`/Vessels?organizationId=${ORG_ID}`, {
+    headers
+  });
   return data;
+  // const { data } = await axios.get('/vessels');
+  // return data;
 });
 
 export const fetchDocuments = memoize(async (aeCode: string) => {
