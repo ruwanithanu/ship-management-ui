@@ -81,11 +81,13 @@ const SharePointDocList = ({ data, parentId, setParentId, page, navigate }: Prop
         parentFolder: getParentFolder(parentId)
       });
     }
-  }, [data, page, term, parentId, sortBy, sortOrder, sortFiles, getParentFolder, getFolderFiles]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, page, term, parentId, sortBy, sortOrder]);
 
   useEffect(() => {
     navigate(1);
-  }, [navigate, term]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [term]);
 
   return <>
     {data ? <>
