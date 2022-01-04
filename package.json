@@ -7,7 +7,7 @@
     "bootstrap": "yarn && cd ui && yarn",
     "build": "cd ui && yarn install && yarn build",
     "start": "node server.js",
-    "dev": "nodemon ./server.js localhost 3080",
+    "dev": "nodemon ./server.js localhost 3080"
   },
   "repository": {
     "type": "git",
