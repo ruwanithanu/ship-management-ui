@@ -24,6 +24,10 @@ app.get('/', (_, res) => {
   res.sendFile(process.cwd() + '/ui/build/index.html');
 });
 
+app.get('/hello', (_, res) => {
+  res.status(200).send({ message: "Hello World!" });
+});
+
 const getHeaders = (domain = 'CDH') => {
   return {
     'Content-Type': 'application/json',
