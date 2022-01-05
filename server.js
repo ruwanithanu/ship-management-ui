@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 dotenv.config();
 
 const app = express();
-const port = process.env.SERVER_PORT || 3080; // default port to listen
+const port = process.env.SERVER_PORT || 8080; // default port to listen
 
 app.use(cors());
 app.use(function(_, res, next) {
