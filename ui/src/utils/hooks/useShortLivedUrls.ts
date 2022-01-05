@@ -8,38 +8,45 @@ export const useShortLivedUrls = (file: Downloadable ) => {
 
   const isExpired = (cache: any) => {
     const now = (new Date()).getTime();
-    return (now - cache.timestamp) > 3600000; // 1 hour TTL
+    const elapsed = now - cache.timestamp;
+    return elapsed > 540000; // 9 min TTL
   };
 
-  const getPreviewUrl = async () => {
+  const getCacheTimeStamp = (url: string, cache: any) => {
+    const thisTime = (new Date()).getTime(); 
+    if (!cache) return thisTime;
+    return cache.url !== url ? thisTime : cache.timestamp + 500;
+  };
+
+  const fetchPreviewUrl = async () => {
     const id = file.id as string;
     let cache = previewCache[id];
 
     if (cache === undefined || isExpired(cache)) {
       const url = await getPreviewURL(file);
-      const timestamp = (new Date()).getTime();
-      cache = {url, timestamp };
+      const timestamp = getCacheTimeStamp(url, cache);
+      cache = { url, timestamp };
       previewCache[id] = cache;
     }
     return cache.url;
   };
 
-  const getDownloadUrl = async () => {
+  const fetchDownloadUrl = async () => {
     const id = file.id as string;
     let cache = downloadCache[id];
 
     if (cache === undefined || isExpired(cache)) {
       const url = await getDownloadURL(file);
-      const timestamp = (new Date()).getTime();
-      cache = {url, timestamp };
+      const timestamp = getCacheTimeStamp(url, cache);
+      cache = { url, timestamp };
       downloadCache[id] = cache;
-    }
+    } 
     return cache.url;
   };
 
   return {
-    getPreviewUrl,
-    getDownloadUrl
+    getPreviewUrl: fetchPreviewUrl,
+    getDownloadUrl: fetchDownloadUrl
   }
 
 };
