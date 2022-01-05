@@ -115,20 +115,12 @@ export const fetchTechnicalPapers = memoize(async () => {
   return data;
 });
 
-export const getDownloadURL = memoize(async (file: Downloadable) => {
-  if (file.hasOwnProperty('driveName')) {
-    const { data: { url } } = await http.get(`/Files/${file.driveName}/${file.id}`);
-    return url;
-  } else {
-    return '/assets/sample.pdf';
-  }
-});
+export const getDownloadURL = async (file: Downloadable) => {
+  const { data: { url } } = await http.get(`/Files/${file.driveName}/${file.id}`);
+  return url;
+};
 
-export const getPreviewURL = memoize(async (file: Downloadable) => {
-  if (file.hasOwnProperty('driveName')) {
-    const { data: { url } } = await http.get(`/Files/preview/${file.driveName}/${file.id}`);
-    return url;
-  } else {
-    return '/assets/sample.pdf';
-  }
-});
+export const getPreviewURL = async (file: Downloadable) => {
+  const { data: { url } } = await http.get(`/Files/preview/${file.driveName}/${file.id}`);
+  return url;
+};

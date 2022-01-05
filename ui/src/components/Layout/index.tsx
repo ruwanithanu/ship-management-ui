@@ -6,9 +6,9 @@ import Topbar from '@components/Topbar';
 import {
   Sidebar,
   useSidebar,
-  PdfViewer,
   usePdfViewer
 } from '@angloeastern/react-components';
+import ViewPdf from '@components/ViewPdf';
 import { getMenu } from '@utils/menu';
 import SC from './style';
 
@@ -33,7 +33,7 @@ const Layout = ({ children }: Props) => {
     <SC.MainBox>
       <Topbar />
       <SC.Main>
-        { isPdfViewerOpen && <PdfViewer /> }
+        { isPdfViewerOpen && <ViewPdf /> }
         { children }
       </SC.Main>
     </SC.MainBox>

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,33 +17,22 @@ const Card = ({ file }: Props) => {
   const { t, ready } = useTranslation();
   const { getPreviewUrl, getDownloadUrl } = useShortLivedUrls(file);
   const { openViewer, setPreview, setDownload } = usePdfViewer();
-  const [state, setState] = useState({
-    previewUrl: undefined,
-    downloadUrl: undefined
-  });
 
-  useEffect(() => {
-    async function getUrls() {
-      const stateCopy = {...state};
-      stateCopy.downloadUrl = await getDownloadUrl();
-      stateCopy.previewUrl = await getPreviewUrl();
-      setState(stateCopy);
-    }
-    if (file && ready) {
-      getUrls();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [file, ready]);
-
-  const handleClick = async () => {
+  async function getUrls() {
+    const downloadUrl = await getDownloadUrl();
+    const previewUrl = await getPreviewUrl();
     setPreview({
-      url: state.previewUrl,
+      url: previewUrl,
       name: file.name
     });
     setDownload({
-      url: state.downloadUrl,
+      url: downloadUrl,
       name: file.name
     });
+  }
+
+  const handleClick = async () => {
+    await getUrls();
     openViewer();
   };
 

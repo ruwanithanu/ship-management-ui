@@ -40,7 +40,8 @@ const Slide = ({ file }: Props ) => {
       }
     }
     getUrls();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [file]);
 
   return <>
     {(state.previewUrl !== undefined && state.downloadUrl !== undefined) && <>
@@ -57,7 +58,7 @@ const Slide = ({ file }: Props ) => {
       </SC.SlideTop>
       <SC.Viewport>
         <SC.Slide>
-          <img src={state.previewUrl as string} alt="slide-image" />
+          <iframe src={state.previewUrl as string} title={file.name} width="100%"/>
         </SC.Slide>
       </SC.Viewport>
     </>}
