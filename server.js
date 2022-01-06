@@ -3,6 +3,7 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const jwt_decode = require('jwt-decode');
 // import path from 'path';
  
 dotenv.config();
@@ -53,6 +54,20 @@ app.get('/api/token/:token', async (req, res) => {
 
   res.status(200).send(data);
 });
+
+app.get('/api/send-org', async (req, res) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  try {
+    const decoded = jwt_decode(token);
+    res.status(200).send(decoded);
+  } catch (e) {
+    res.status(500).send({
+      message: e.message
+    });
+  }
+});(' ')
 
 app.get('/api/vessels/:orgId', async (req, res) => {
   const { orgId } = req.params;
