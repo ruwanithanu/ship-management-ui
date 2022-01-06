@@ -37,7 +37,21 @@ const getHeaders = (domain = 'CDH') => {
 
 const http = axios.create({
   baseURL: process.env.SHIP_MANAGEMENT_API_URL,
-  timeout: process.env.REQUEST_TIMEOUT
+  timeout: process.env.REQUEST_TIMEOUT,
+  proxy: false
+});
+
+app.get('/api/token/:token', async (req, res) => {
+  const { token } = req.params;
+  const headers = {
+    ...getHeaders(),
+    Authorization: `BEARER ${token}`
+  };
+  const { data } = await http.get(`/Auth/UserInfo`, {
+    headers
+  });
+
+  res.status(200).send(data);
 });
 
 app.get('/api/vessels/:orgId', async (req, res) => {
