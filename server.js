@@ -3,8 +3,6 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const jwt_decode = require('jwt-decode');
-// import path from 'path';
  
 dotenv.config();
 
@@ -18,16 +16,6 @@ app.use(function(_, res, next) {
   next();
 });
 app.use(bodyParser.json());
-app.use(express.static(process.cwd() + '/ui/build/'));
-
-// define a route handler for the default home page
-app.get('/', (_, res) => {
-  res.sendFile(process.cwd() + '/ui/build/index.html');
-});
-
-app.get('/hello', (_, res) => {
-  res.status(200).send({ message: "Hello World!" });
-});
 
 const getHeaders = (domain = 'CDH') => {
   return {
@@ -38,40 +26,74 @@ const getHeaders = (domain = 'CDH') => {
 
 const http = axios.create({
   baseURL: process.env.SHIP_MANAGEMENT_API_URL,
-  timeout: process.env.REQUEST_TIMEOUT,
-  proxy: false
+  timeout: process.env.REQUEST_TIMEOUT
 });
 
-app.get('/api/token/:token', async (req, res) => {
-  const { token } = req.params;
-  const headers = {
-    ...getHeaders(),
-    Authorization: `BEARER ${token}`
-  };
-  const { data } = await http.get(`/Auth/UserInfo`, {
-    headers
-  });
+const dummyUserInfo = {
+  userInfo:
+  {
+    nbf: 1640246429,
+    exp: 1640332829,
+    iss: "https://identity-provider-dev.azurewebsites.net",
+    aud: "login.api",
+    client_id: "spaclient",
+    sub: "{\n  \"id\": 102,\n  \"organizationIds\": [\n    3\n  ],\n  \"vesselIds\": [\n    1\n  ],\n  \"roleId\": 2,\n  \"email\": \"villamora@angloeastern.com\",\n  \"roleName\": \"Client Admin\",\n  \"fullName\": \"Apol Villamora\",\n  \"requiresTwoFactor\": false,\n  \"secondFactorAuthConfig\": null\n}",
+    auth_time: 1640246429,
+    idp: "local",
+    name: "villamora@angloeastern.com",
+    OrganizationIds: "5",
+    VesselIds: "1",
+    RoleId: "2",
+    UserId: "102",
+    Roles: "Client Admin",
+    FullName: "Apol Villamora",
+    scope: [
+      "openid",
+      "login.api"
+    ],
+    amr: [
+      "pwd"
+    ]
+  }
+};
 
-  res.status(200).send(data);
-});
-
-app.get('/api/send-org', async (req, res) => {
+app.get('/', async (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
-  try {
-    const decoded = jwt_decode(token);
-    res.status(200).send(decoded);
-  } catch (e) {
-    res.status(500).send({
-      message: e.message
+  if (token) {
+    try {
+      const headers = {
+        ...getHeaders(),
+        Authorization: `BEARER ${token}`
+      };
+      const { data: { userInfo }} = await http.get(`/Auth/UserInfo`, {
+        headers
+      });
+      res.cookie('userInfo', JSON.stringify(userInfo), {
+        maxAge: 86400000, //1 day
+        httpOnly: false
+      })
+    } catch (e) {
+      res.status(500).send({
+        message: e.message
+      });
+    }
+  } else {
+    res.cookie('userInfo', JSON.stringify(dummyUserInfo.userInfo), {
+      maxAge: 86400000, //1 day
+      httpOnly: false
     });
   }
-});(' ')
 
-app.get('/api/vessels/:orgId', async (req, res) => {
-  const { orgId } = req.params;
-  const { data } = await http.get(`/Vessels?organizationId=${orgId}`, {
+  next();
+});
+
+app.use(express.static(process.cwd() + '/ui/build/'));
+
+app.get('/api/vessels/:orgId?', async (req, res) => {
+  const url = req.params.orgId ? `/Vessels?organizationId=${req.params.orgId}` : '/Vessels';
+  const { data } = await http.get(url, {
     headers: getHeaders()
   });
 
@@ -142,7 +164,7 @@ app.get('/api/download-url/:driveName/:fileId', async (req, res) => {
 
 app.get('/api/preview-url/:driveName/:fileId', async (req, res) => {
   const { driveName, fileId } = req.params;
-  const { data } = await http.get(`/Files/${driveName}/${fileId}`, {
+  const { data } = await http.get(`/Files/preview/${driveName}/${fileId}`, {
     headers: getHeaders()
   });
 

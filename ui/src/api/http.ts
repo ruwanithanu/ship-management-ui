@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const {
-  REACT_APP_SHIP_MANAGEMENT_API_URL: baseURL,
+  REACT_APP_SVC_URL: baseURL,
   REACT_APP_REQUEST_TIMEOUT: timeout
 } = process.env;
 
